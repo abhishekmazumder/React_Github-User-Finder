@@ -1,0 +1,38 @@
+export default {
+	login: 'AbhishekMazumder',
+	id: 24761197,
+	node_id: 'MDQ6VXNlcjI0NzYxMTk3',
+	avatar_url: 'https://avatars0.githubusercontent.com/u/24761197?v=4',
+	gravatar_id: '',
+	url: 'https://api.github.com/users/AbhishekMazumder',
+	html_url: 'https://github.com/AbhishekMazumder',
+	followers_url: 'https://api.github.com/users/AbhishekMazumder/followers',
+	following_url:
+		'https://api.github.com/users/AbhishekMazumder/following{/other_user}',
+	gists_url: 'https://api.github.com/users/AbhishekMazumder/gists{/gist_id}',
+	starred_url:
+		'https://api.github.com/users/AbhishekMazumder/starred{/owner}{/repo}',
+	subscriptions_url:
+		'https://api.github.com/users/AbhishekMazumder/subscriptions',
+	organizations_url: 'https://api.github.com/users/AbhishekMazumder/orgs',
+	repos_url: 'https://api.github.com/users/AbhishekMazumder/repos',
+	events_url: 'https://api.github.com/users/AbhishekMazumder/events{/privacy}',
+	received_events_url:
+		'https://api.github.com/users/AbhishekMazumder/received_events',
+	type: 'User',
+	site_admin: false,
+	name: 'Abhishek Mazumder',
+	company: null,
+	blog: '',
+	location: null,
+	email: null,
+	hireable: true,
+	bio: 'Part time blogger & Full-time explorer of tech universe!',
+	twitter_username: null,
+	public_repos: 25,
+	public_gists: 0,
+	followers: 0,
+	following: 2,
+	created_at: '2016-12-25T07:21:09Z',
+	updated_at: '2020-08-24T19:19:20Z',
+};
