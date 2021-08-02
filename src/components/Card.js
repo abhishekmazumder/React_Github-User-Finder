@@ -2,6 +2,7 @@ import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+
 const Card = () => {
 
   const { githubUser } = React.useContext(GithubContext);
@@ -23,7 +24,7 @@ const Card = () => {
 				<img src={avatar_url} alt={name} />
 				<div>
 					<h4>{name}</h4>
-					<p>@{twitter_username || 'no twitter account'} </p>
+					<p>@{twitter_username || 'noTwitterAccount'} </p>
 				</div>
 				<a href={html_url}>follow</a>
 			</header>
@@ -35,7 +36,7 @@ const Card = () => {
 				</p>
 				<p>
 					<MdLocationOn></MdLocationOn>
-					{location}
+					{location || "Kolkata, India"}
 				</p>
 				<a href={`https://${blog}`}>
           <MdLink></MdLink>{blog}
@@ -52,7 +53,7 @@ const Wrapper = styled.article`
 	border-bottom-right-radius: var(--radius);
 	position: relative;
 	&::before {
-		content: 'user';
+		content: 'User Profile';
 		position: absolute;
 		top: 0;
 		left: 0;

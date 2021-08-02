@@ -6,51 +6,82 @@ import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
 	const { repos } = React.useContext(GithubContext);
 
-	let languages = repos.reduce((total, item) => {
-		const { language } = item;
+	const languages = repos.reduce((total, item) => {
+		const { language, stargazers_count } = item;
 		if (!language) {
 			return total;
 		}
 		if (!total[language]) {
-			total[language] = { label: language, value: 1 };
+			total[language] = { label: language, value: 1, stars: stargazers_count };
 		} else {
 			total[language] = {
 				...total[language],
 				value: total[language].value + 1,
+				stars: total[language].stars + stargazers_count,
 			};
 		}
 		return total;
 	}, {});
 
-  languages = Object.values(languages); //converting laguages Object to languages Array
-  
-  //sorting only top 5 programming languages
-	languages
+	const mostUsed = Object.values(languages); //converting laguages Object to languages Array
+
+	//sorting only top 5 programming languages
+	mostUsed
 		.sort((a, b) => {
 			return b.value - a.value;
 		})
 		.slice(0, 5);
-  
-  //static dummy data
-	// const chartData = [
-	// 	{
-	// 		label: 'HTML',
-	// 		value: '130',
-	// 	},
-	// 	{
-	// 		label: 'CSS',
-	// 		value: '23',
-	// 	},
-	// 	{
-	// 		label: 'Javascript',
-	// 		value: '80',
-	// 	},
-	// ];
+
+	// MOST STARS PER LANGUAGE
+	const mostPopular = Object.values(languages);
+
+	//sorting top 5 stared programming languages
+	mostPopular
+		.sort((a, b) => {
+			return b.stars - a.stars;
+		})
+		.map(item => {
+			return { ...item, value: item.stars };
+		})
+		.slice(0, 5);
+
+	// STARS & FORKS
+	let { stars, forks } = repos.reduce(
+		(total, item) => {
+			const { stargazers_count, name, forks } = item;
+			total.stars[stargazers_count] = { label: name, value: stargazers_count };
+			total.forks[forks] = { label: name, value: forks };
+			return total;
+		},
+		{ stars: {}, forks: {} }
+	);
+
+	stars = Object.values(stars).slice(-5).reverse();
+	forks = Object.values(forks).slice(-5).reverse();
+
+	// STATIC DUMMY DATA
+	const chartData = [
+		{
+			label: 'HTML',
+			value: '130',
+		},
+		{
+			label: 'CSS',
+			value: '23',
+		},
+		{
+			label: 'Javascript',
+			value: '80',
+		},
+	];
+
 	return (
 		<section className="section">
 			<Wrapper className="section-center">
-				<Pie3D data={languages} />
-				{/* <ExampleChart data={chartData} /> */}
+				<Pie3D data={mostUsed} />
+				<Column3D data={stars} />
+				<Doughnut2D data={mostPopular} />
+				<Bar3D data={forks} />
 			</Wrapper>
 		</section>
 	);

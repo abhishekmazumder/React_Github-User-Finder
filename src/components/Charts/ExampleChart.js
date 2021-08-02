@@ -44,7 +44,7 @@ const ChartComponent = ({ data }) => {
 	};
 	return (
 		<div>
-			<ReactFC {...chartConfigs} />;
+			<ReactFC {...chartConfigs} />
 		</div>
 	);
 };
